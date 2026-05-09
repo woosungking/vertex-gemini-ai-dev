@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NextTech 제품 매뉴얼 검색</title>
+  <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=ko"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f1117;
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 헤더 */
+    header {
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1e2433;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .badge {
+      font-size: 11px;
+      background: #1e2433;
+      color: #64748b;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid #2d3748;
+    }
+
+    /* 메인 */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 16px;
+      color: #64748b;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* 검색 영역 */
+    .search-container {
+      width: 100%;
+      max-width: 640px;
+      position: relative;
+    }
+
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 18px;
+      color: #64748b;
+      font-size: 18px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    #searchWidgetTrigger {
+      width: 100%;
+      padding: 18px 18px 18px 52px;
+      background: #1a1f2e;
+      border: 1px solid #2d3748;
+      border-radius: 14px;
+      color: #e2e8f0;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    #searchWidgetTrigger:hover {
+      border-color: #3b82f6;
+      background: #1e2433;
+    }
+
+    #searchWidgetTrigger:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+
+    #searchWidgetTrigger::placeholder {
+      color: #475569;
+    }
+
+    .search-hint {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 13px;
+      color: #475569;
+    }
+
+    /* 제품 카드 */
+    .products {
+      margin-top: 64px;
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .products-title {
+      text-align: center;
+      font-size: 13px;
+      color: #475569;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .product-card {
+      background: #1a1f2e;
+      border: 1px solid #1e2433;
+      border-radius: 12px;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .product-card:hover {
+      border-color: #3b82f6;
+      background: #1e2433;
+      transform: translateY(-2px);
+    }
+
+    .product-card .icon {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .product-card .name {
+      font-size: 12px;
+      font-weight: 600;
+      color: #94a3b8;
+    }
+
+    .product-card .model {
+      font-size: 11px;
+      color: #475569;
+      margin-top: 2px;
+    }
+
+    /* 푸터 */
+    footer {
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 12px;
+      color: #334155;
+      border-top: 1px solid #1e2433;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">⚡</div>
+      <span class="logo-text">NextTech</span>
+    </div>
+    <span class="badge">AI 매뉴얼 검색 Beta</span>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>제품 매뉴얼을<br /><span>AI로 검색</span>하세요</h1>
+      <p>NT-S100, NT-W200, NT-R300, NT-C400 제품의 사용법, 설정, 문제 해결을 빠르게 찾아드립니다.</p>
+    </div>
+
+    <div class="search-container">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input
+          placeholder="예: 배터리가 빨리 닳아요, 와이파이 연결 방법, LED 빨간불 의미..."
+          id="searchWidgetTrigger"
+        />
+      </div>
+      <p class="search-hint">클릭하거나 Enter를 눌러 검색하세요</p>
+    </div>
+
+    <div class="products">
+      <p class="products-title">지원 제품</p>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="icon">🔊</div>
+          <div class="name">스마트 스피커</div>
+          <div class="model">NT-S100</div>
+        </div>
+        <div class="product-card">
+          <div class="icon">⌚</div>
+          <div class="name">스마트워치</div>
+          <div class="model">NT-W200</div>
+        </div>
+        <div class="product-card">
+          <div class="icon">🤖</div>
+          <div class="name">로봇 청소기</div>
+          <div class="model">NT-R300</div>
+        </div>
+        <div class="product-card">
+          <div class="icon">📷</div>
+          <div class="name">보안 카메라</div>
+          <div class="model">NT-C400</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 NextTech Co., Ltd. · Powered by Vertex AI Search
+  </footer>
+
+  <gen-search-widget
+    configId="094cfff8-f690-470a-a34f-fdf26282b109"
+    triggerId="searchWidgetTrigger">
+  </gen-search-widget>
+
+  <script>
+    const searchWidget = document.querySelector('gen-search-widget');
+    // TODO: 백엔드에서 JWT 토큰 발급 후 아래에 설정
+    // searchWidget.authToken = "YOUR_JWT_TOKEN";
+  </script>
+
+</body>
+</html>
