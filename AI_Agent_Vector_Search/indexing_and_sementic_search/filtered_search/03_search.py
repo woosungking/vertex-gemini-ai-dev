@@ -23,12 +23,12 @@ from google import genai
 from google.genai.types import EmbedContentConfig
 from google.cloud import aiplatform
 
-from config import (
+from AI_Agent_Vector_Search.indexing_and_sementic_search.config import (
     PROJECT_ID, LOCATION,
     EMBEDDING_MODEL, EMBEDDING_DIM,
     INDEX_ENDPOINT_ID, FILTERED_DEPLOYED_INDEX_ID,
 )
-from faq_filtered_add import faq_data_filtered
+from AI_Agent_Vector_Search.indexing_and_sementic_search.faq_filtered_add import faq_data_filtered
 
 VALID_CATEGORIES = ["account", "payment", "support", "app", "privacy", "dev", "service"]
 FAQ_MAP = {item["id"]: item["text"] for item in faq_data_filtered}

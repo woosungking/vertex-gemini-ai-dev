@@ -16,12 +16,12 @@ from google import genai
 from google.genai.types import EmbedContentConfig
 from google.cloud import storage
 
-from config import (
+from AI_Agent_Vector_Search.indexing_and_sementic_search.config import (
     PROJECT_ID, LOCATION,
     EMBEDDING_MODEL, EMBEDDING_DIM,
     GCS_BUCKET_NAME, GCS_FILTERED_INPUT_URI,
 )
-from faq_filtered_add import faq_data_filtered
+from AI_Agent_Vector_Search.indexing_and_sementic_search.faq_filtered_add import faq_data_filtered
 
 EMBEDDINGS_FILE = "faq_filtered_embeddings.json"
 

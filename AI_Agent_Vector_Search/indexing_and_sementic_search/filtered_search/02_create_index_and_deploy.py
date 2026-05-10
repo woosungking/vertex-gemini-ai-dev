@@ -12,7 +12,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from google.cloud import aiplatform
-from config import (
+from AI_Agent_Vector_Search.indexing_and_sementic_search.config import (
     PROJECT_ID, LOCATION,
     FILTERED_INDEX_DISPLAY_NAME, GCS_FILTERED_INPUT_URI,
     FILTERED_DEPLOYED_INDEX_ID, EMBEDDING_DIM,

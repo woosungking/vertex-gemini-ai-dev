@@ -18,12 +18,12 @@ from google.cloud import storage
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from config import (
+from AI_Agent_Vector_Search.indexing_and_sementic_search.config import (
     PROJECT_ID, LOCATION,
     EMBEDDING_MODEL, EMBEDDING_DIM,
     EMBEDDINGS_FILE, GCS_BUCKET_NAME, GCS_INPUT_URI,
 )
-from faq import faq_data_raw
+from AI_Agent_Vector_Search.indexing_and_sementic_search.faq import faq_data_raw
 
 
 def get_embedding_vector(

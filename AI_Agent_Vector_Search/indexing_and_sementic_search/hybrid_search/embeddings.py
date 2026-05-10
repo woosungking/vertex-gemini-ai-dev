@@ -11,7 +11,7 @@ from google import genai
 from google.genai.types import EmbedContentConfig
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-from config import PROJECT_ID, LOCATION, EMBEDDING_MODEL, EMBEDDING_DIM
+from AI_Agent_Vector_Search.indexing_and_sementic_search.config import PROJECT_ID, LOCATION, EMBEDDING_MODEL, EMBEDDING_DIM
 
 genai_client = genai.Client(vertexai=True, project=PROJECT_ID, location=LOCATION)
 

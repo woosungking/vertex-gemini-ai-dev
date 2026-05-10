@@ -8,9 +8,9 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from faq_filtered_add import faq_data_filtered
-from hybrid_search.embeddings import fit_tfidf
-from hybrid_search.search import execute_hybrid_search
+from AI_Agent_Vector_Search.indexing_and_sementic_search.faq_filtered_add import faq_data_filtered
+from AI_Agent_Vector_Search.indexing_and_sementic_search.hybrid_search.embeddings import fit_tfidf
+from AI_Agent_Vector_Search.indexing_and_sementic_search.hybrid_search.search import execute_hybrid_search
 
 # FAQ ID → 원문 텍스트 조회용
 FAQ_MAP = {item["id"]: item["text"] for item in faq_data_filtered}

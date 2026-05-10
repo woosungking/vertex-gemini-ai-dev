@@ -15,12 +15,12 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from config import (
+from AI_Agent_Vector_Search.indexing_and_sementic_search.config import (
     PROJECT_ID, LOCATION,
     EMBEDDING_MODEL, EMBEDDING_DIM,
     INDEX_ENDPOINT_ID, DEPLOYED_INDEX_ID,
 )
-from faq import faq_data_raw
+from AI_Agent_Vector_Search.indexing_and_sementic_search.faq import faq_data_raw
 
 # FAQ ID → 원문 텍스트 빠른 조회용
 FAQ_MAP = {item["id"]: item["text"] for item in faq_data_raw}

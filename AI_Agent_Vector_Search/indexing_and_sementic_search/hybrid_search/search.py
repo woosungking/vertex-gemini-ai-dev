@@ -14,8 +14,8 @@ from google.cloud.aiplatform.matching_engine.matching_engine_index_endpoint impo
     MatchNeighbor, Namespace, HybridQuery
 )
 
-from config import PROJECT_ID, LOCATION, INDEX_ENDPOINT_ID, FILTERED_DEPLOYED_INDEX_ID
-from hybrid_search.embeddings import get_dense_embedding, get_sparse_embedding
+from AI_Agent_Vector_Search.indexing_and_sementic_search.config import PROJECT_ID, LOCATION, INDEX_ENDPOINT_ID, FILTERED_DEPLOYED_INDEX_ID
+from AI_Agent_Vector_Search.indexing_and_sementic_search.hybrid_search.embeddings import get_dense_embedding, get_sparse_embedding
 
 # 하이브리드 검색 설정
 RRF_ALPHA = 0.5    # Dense:Sparse 가중치 (0.5 = 5:5)
